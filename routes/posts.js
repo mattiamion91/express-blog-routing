@@ -28,3 +28,6 @@ router.patch('/posts/:id', function (req, res) {
 router.delete('/posts/:id', function (req, res) {
     res.send('Eliminazione della pizza ' + req.params.id);
 });
+
+//esporto istanza rootte
+module.exports = router;

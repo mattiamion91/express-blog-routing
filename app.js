@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 const port = 3000
+//importo istanza rotte
+const rottePosts = require('./routes/posts')
 
 app.use(express.static('public')) //asset statici di expressjs (middleware)
 //rotta index
