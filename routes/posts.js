@@ -8,7 +8,7 @@ const listaPosts = require('../data/postsList')
 //rotte di crud
 // index
 router.get('/', function (req, res) {
-    res.json({numeroPosts: listaPosts.length, listaPosts});
+    res.json({ numeroPosts: listaPosts.length, listaPosts });
 });
 // show
 router.get('/:id', function (req, res) {
@@ -16,6 +16,9 @@ router.get('/:id', function (req, res) {
     const postById = parseInt(req.params.id) //uso parse int perche req.params.id mi sertitusce una stringa e io ho bisogna di un numero per rendere vera l'uguaglianza stretta (non ci sarei mai arrivato da solo!)
     //cerco post specifico usando metodo 'find' e usando id specifico recuerparo con req.params.id
     const showById = listaPosts.find((post) => post.id === postById) //sintasssi meootdo find copiata da mdn
+    if (!showById) {
+        return res.status(404).json({ message: 'prodotto non trovato' });
+    }
     res.json(showById);
 });
 // store
