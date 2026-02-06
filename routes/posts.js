@@ -20,7 +20,7 @@ router.get('/:id', function (req, res) {
 });
 // store
 router.post('/', function (req, res) {
-    res.send('Creazione nuovo post');
+    res.send('Creazione nuovo post'); //da questa rotta di crud uso res.send perche mi restitusce un messaggio/html, sopra uso res.json perche mi deve tornare un oggetto json
 });
 // update
 router.put('/:id', function (req, res) {
