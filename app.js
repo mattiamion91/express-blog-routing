@@ -10,56 +10,33 @@ app.get('/', (req, res) => { //prima rotta preincipale
     //res.send('<h1>Server del mio blog</h1>') //il type di default é 'html'
 })
 
-//rotta bacheca che mi restiutusice oggetto json con lista post
-app.get('/bacheca', (req, res) => {
+//rotte di crud
+// index
+app.get('/posts', function (req, res) {
+    res.send('Lista delle pizze');
+});
+// show
+app.get('/posts/:id', function (req, res) {
+    res.send('Dettagli della pizza ' + req.params.id);
+});
+// store
+app.post('/posts', function (req, res) {
+    res.send('Creazione nuova pizza');
+});
+// update
+app.put('/posts/:id', function (req, res) {
+    res.send('Modifica integrale della pizza ' + req.params.id);
+});
+// modify
+app.patch('/posts/:id', function (req, res) {
+    res.send('Modifica parziale della pizza ' + req.params.id);
+});
+// destroy
+app.delete('/posts/:id', function (req, res) {
+    res.send('Eliminazione della pizza ' + req.params.id);
+});
 
-    //creo un oggetto js da inviare nella res
-
-    const posts = [
-        {
-            id: 1,
-            titolo: "Ciambellone",
-            contenuto: "Il classico dolce della nonna, soffice e perfetto per la colazione. Preparato con uova fresche, farina e un tocco di scorza di limone.",
-            immagine: "/images/ciambellone.jpeg",
-            tags: ["dolce", "colazione", "tradizione", "fatto in casa"]
-        },
-        {
-            id: 2,
-            titolo: "Cracker di barbabietole",
-            contenuto: "Uno snack croccante e salutare dal colore viola intenso. Ideali da servire durante un aperitivo con salse allo yogurt.",
-            immagine: "/images/cracker_barbabietola.jpeg",
-            tags: ["snack", "vegano", "healthy", "barbabietola"]
-        },
-        {
-            id: 3,
-            titolo: "Pane fritto dolce",
-            contenuto: "Una ricetta di recupero golosissima: fette di pane raffermo passate nell'uovo e latte, fritte e ripassate nello zucchero e cannella.",
-            immagine: "/images/pane_fritto_dolce.jpeg",
-            tags: ["dolce", "riciclo", "comfort food", "merenda"]
-        },
-        {
-            id: 4,
-            titolo: "Pasta di barbabietola",
-            contenuto: "Un primo piatto scenografico dove la barbabietola frullata crea una crema vellutata che avvolge perfettamente la pasta.",
-            immagine: "/images/pasta_barbabietola.jpeg",
-            tags: ["primo piatto", "vegetariano", "colore", "barbabietola"]
-        },
-        {
-            id: 5,
-            titolo: "Torta paesana",
-            contenuto: "Il dolce povero della tradizione lombarda a base di pane raffermo, latte, cacao, pinoli e uvetta. Un'esplosione di sapori antichi.",
-            immagine: "/images/torta_paesana.jpeg",
-            tags: ["dolce", "tradizione", "lombardia", "cioccolato"]
-        }
-    ];
-    //ritorno risposta con json oggetto posts blog
-    res.json({
-        count: posts.length,
-        posts
-    })
-
-})
-
+// Avvia il server e lo mette in ascolto per richieste HTTP sulla porta specificata
 app.listen(port, () => {
     console.log(`esempio di app in ascolto sulla porta ${port}`); //tempalte litteral perche se in ambiente js
 })
