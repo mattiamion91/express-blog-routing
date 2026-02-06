@@ -12,6 +12,9 @@ app.get('/', (req, res) => { //prima rotta preincipale
     //res.send('<h1>Server del mio blog</h1>') //il type di default é 'html'
 })
 
+//istanza rotte posts
+app.use('/posts', rottePosts)
+
 // Avvia il server e lo mette in ascolto per richieste HTTP sulla porta specificata
 app.listen(port, () => {
     console.log(`esempio di app in ascolto sulla porta ${port}`); //tempalte litteral perche se in ambiente js
